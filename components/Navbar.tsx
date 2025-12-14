@@ -13,7 +13,7 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, scrollToSection }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      setIsScrolled(window.scrollY > 20);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -35,7 +35,7 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, scrollToSection }) => {
   return (
     <nav
       className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white/95 backdrop-blur-sm shadow-md py-4' : 'bg-transparent py-6'
+        isScrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-6'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -45,14 +45,14 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, scrollToSection }) => {
             className="flex items-center cursor-pointer group" 
             onClick={() => handleNavClick(SectionId.HOME)}
           >
-            <div className={`p-2 rounded-lg mr-3 transition-colors ${isScrolled ? 'bg-amber-700 text-white' : 'bg-white text-amber-800'}`}>
+            <div className="bg-amber-700 text-white p-2 rounded-lg mr-3 shadow-md">
               <TreePine size={28} />
             </div>
             <div>
-              <h1 className={`text-xl font-bold tracking-wide transition-colors ${isScrolled ? 'text-gray-900' : 'text-white'}`}>
+              <h1 className="text-xl font-bold tracking-wide text-stone-900">
                 威海耀晟
               </h1>
-              <p className={`text-xs transition-colors ${isScrolled ? 'text-gray-600' : 'text-gray-200'}`}>
+              <p className="text-xs text-stone-500 font-medium">
                 WEIHAI YAOSHENG WOOD
               </p>
             </div>
@@ -64,12 +64,10 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, scrollToSection }) => {
               <button
                 key={link.id}
                 onClick={() => handleNavClick(link.id)}
-                className={`text-sm font-medium transition-colors duration-200 hover:text-amber-500 ${
+                className={`text-sm font-medium transition-colors duration-200 hover:text-amber-600 ${
                   activeSection === link.id
-                    ? 'text-amber-600'
-                    : isScrolled
-                    ? 'text-gray-700'
-                    : 'text-white'
+                    ? 'text-amber-700 font-bold'
+                    : 'text-stone-600'
                 }`}
               >
                 {link.label}
@@ -81,7 +79,7 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, scrollToSection }) => {
           <div className="md:hidden">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className={`p-2 rounded-md ${isScrolled ? 'text-gray-800' : 'text-white'}`}
+              className="p-2 text-stone-700"
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -100,7 +98,7 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, scrollToSection }) => {
                 className={`block w-full text-left px-3 py-3 rounded-md text-base font-medium ${
                   activeSection === link.id
                     ? 'text-amber-700 bg-amber-50'
-                    : 'text-gray-700 hover:bg-gray-50'
+                    : 'text-stone-600 hover:bg-stone-50'
                 }`}
               >
                 {link.label}
