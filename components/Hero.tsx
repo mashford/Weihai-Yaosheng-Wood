@@ -56,7 +56,7 @@ const Hero: React.FC<HeroProps> = ({ scrollToSection }) => {
                 <CheckCircle2 size={18} className="text-amber-600" /> 源头工厂
               </div>
               <div className="flex items-center gap-1">
-                <CheckCircle2 size={18} className="text-amber-600" /> 出口资质
+                <CheckCircle2 size={18} className="text-amber-600" /> 专业定制
               </div>
               <div className="flex items-center gap-1">
                 <CheckCircle2 size={18} className="text-amber-600" /> 匠心品质
