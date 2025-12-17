@@ -3,16 +3,16 @@ import { SectionId, Product } from '../types';
 import { Package, Truck, Hammer } from 'lucide-react';
 
 const PRODUCT_DATA: Product[] = [
-  { id: 1, title: '出口级胶合板托盘', category: '免熏蒸托盘', description: '高承重，符合ISPM15标准，直接出口', imageUrl: 'https://picsum.photos/600/400?random=10' },
-  { id: 2, title: '重型机械包装箱', category: '出口包装箱', description: '专为大型机械设计，结构稳固', imageUrl: 'https://picsum.photos/600/400?random=11' },
-  { id: 3, title: '欧标实木托盘', category: '实木托盘', description: '标准尺寸 1200x800mm，耐用性强', imageUrl: 'https://picsum.photos/600/400?random=12' },
-  { id: 4, title: '电子设备精密包装', category: '出口包装箱', description: '防震防潮，保护精密仪器', imageUrl: 'https://picsum.photos/600/400?random=13' },
-  { id: 5, title: '航空专用轻型托盘', category: '航空托盘', description: '自重轻，降低空运成本', imageUrl: 'https://picsum.photos/600/400?random=14' },
-  { id: 6, title: '定制熏蒸木箱', category: '熏蒸托盘', description: '经过严格熏蒸处理，附带证书', imageUrl: 'https://picsum.photos/600/400?random=15' },
-  { id: 7, title: '仓储周转托盘', category: '实木托盘', description: '适合工厂内部周转，性价比高', imageUrl: 'https://picsum.photos/600/400?random=16' },
-  { id: 8, title: '可拆卸围板箱', category: '出口包装箱', description: '循环使用，节省仓储空间', imageUrl: 'https://picsum.photos/600/400?random=17' },
-  { id: 9, title: '化工桶专用托盘', category: '实木托盘', description: '特殊凹槽设计，防止桶滑落', imageUrl: 'https://picsum.photos/600/400?random=18' },
-  { id: 10, title: '大型设备底座', category: '出口包装箱', description: '超强承重能力，可达10吨以上', imageUrl: 'https://picsum.photos/600/400?random=19' },
+  { id: 1, title: '出口级胶合板托盘', category: '免熏蒸托盘', description: '高承重，符合ISPM15标准，直接出口', imageUrl: '/images/1.jpg' },
+  { id: 2, title: '重型机械包装箱', category: '出口包装箱', description: '专为大型机械设计，结构稳固', imageUrl: '/images/2.jpg' },
+  { id: 3, title: '欧标实木托盘', category: '实木托盘', description: '标准尺寸 1200x800mm，耐用性强', imageUrl: '/images/3.jpg' },
+  { id: 4, title: '电子设备精密包装', category: '出口包装箱', description: '防震防潮，保护精密仪器', imageUrl: '/images/4.jpg' },
+  { id: 5, title: '航空专用轻型托盘', category: '航空托盘', description: '自重轻，降低空运成本', imageUrl: '/images/5.jpg' },
+  { id: 6, title: '定制熏蒸木箱', category: '熏蒸托盘', description: '经过严格熏蒸处理，附带证书', imageUrl: '/images/6.jpg' },
+  { id: 7, title: '仓储周转托盘', category: '实木托盘', description: '适合工厂内部周转，性价比高', imageUrl: '/images/7.jpg' },
+  { id: 8, title: '可拆卸围板箱', category: '出口包装箱', description: '循环使用，节省仓储空间', imageUrl: '/images/8.jpg' },
+  { id: 9, title: '化工桶专用托盘', category: '实木托盘', description: '特殊凹槽设计，防止桶滑落', imageUrl: '/images/9.jpg' },
+  { id: 10, title: '大型设备底座', category: '出口包装箱', description: '超强承重能力，可达10吨以上', imageUrl: '/images/10.jpg' },
 ];
 
 const CATEGORIES = ['全部', '出口包装箱', '免熏蒸托盘', '实木托盘', '航空托盘'];
@@ -23,6 +23,13 @@ const ProductShowcase: React.FC = () => {
   const filteredProducts = activeCategory === '全部' 
     ? PRODUCT_DATA 
     : PRODUCT_DATA.filter(p => p.category === activeCategory);
+
+  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+    const target = e.currentTarget;
+    // Fallback image if local file is not found
+    target.src = "https://placehold.co/600x400/f5f5f4/a8a29e?text=待上传图片";
+    target.onerror = null; // Prevent infinite loop
+  };
 
   return (
     <section id={SectionId.PRODUCTS} className="py-20 bg-stone-100">
@@ -58,10 +65,11 @@ const ProductShowcase: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {filteredProducts.map((product) => (
             <div key={product.id} className="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-              <div className="relative h-48 overflow-hidden">
+              <div className="relative h-48 overflow-hidden bg-gray-200">
                 <img 
                   src={product.imageUrl} 
                   alt={product.title} 
+                  onError={handleImageError}
                   className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
                 />
                 <div className="absolute top-2 right-2 bg-black/60 text-white text-xs px-2 py-1 rounded backdrop-blur-md">

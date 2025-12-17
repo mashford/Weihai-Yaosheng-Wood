@@ -12,14 +12,24 @@ const About: React.FC = () => {
           <div className="relative mb-12 lg:mb-0">
             <div className="grid grid-cols-2 gap-4">
               <img 
-                src="https://picsum.photos/400/500?random=1" 
+                src="/images/2.jpg" 
                 alt="Factory worker" 
                 className="rounded-lg shadow-xl w-full h-64 object-cover transform translate-y-4"
+                onError={(e) => {
+                  const target = e.currentTarget;
+                  target.src = "https://picsum.photos/400/500?random=1";
+                  target.onerror = null;
+                }}
               />
               <img 
-                src="https://picsum.photos/400/500?random=2" 
+                src="/images/7.jpg" 
                 alt="Wood piles" 
                 className="rounded-lg shadow-xl w-full h-64 object-cover"
+                onError={(e) => {
+                  const target = e.currentTarget;
+                  target.src = "https://picsum.photos/400/500?random=2";
+                  target.onerror = null;
+                }}
               />
             </div>
             {/* Experience Badge */}
