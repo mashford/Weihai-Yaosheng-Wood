@@ -35,7 +35,6 @@ function App() {
       </main>
 
       <Footer />
-      <AIConsultant />
     </div>
   );
 }
