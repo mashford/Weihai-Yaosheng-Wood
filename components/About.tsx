@@ -1,6 +1,5 @@
 import React from 'react';
 import { SectionId } from '../types';
-import { Target, Users, Globe } from 'lucide-react';
 
 const About: React.FC = () => {
   return (
@@ -58,21 +57,21 @@ const About: React.FC = () => {
             <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-6">
               <div className="flex flex-col items-center text-center p-4 bg-stone-50 rounded-lg">
                 <div className="p-3 bg-amber-100 rounded-full text-amber-700 mb-3">
-                  <Target size={24} />
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
                 </div>
                 <h3 className="font-bold text-gray-900">专业定制</h3>
                 <p className="text-sm text-gray-500 mt-1">满足不同行业特殊需求</p>
               </div>
               <div className="flex flex-col items-center text-center p-4 bg-stone-50 rounded-lg">
                 <div className="p-3 bg-amber-100 rounded-full text-amber-700 mb-3">
-                  <Users size={24} />
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
                 </div>
                 <h3 className="font-bold text-gray-900">资深团队</h3>
                 <p className="text-sm text-gray-500 mt-1">匠心工艺，严格把控</p>
               </div>
               <div className="flex flex-col items-center text-center p-4 bg-stone-50 rounded-lg">
                 <div className="p-3 bg-amber-100 rounded-full text-amber-700 mb-3">
-                  <Globe size={24} />
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" x2="22" y1="12" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
                 </div>
                 <h3 className="font-bold text-gray-900">全球出口</h3>
                 <p className="text-sm text-gray-500 mt-1">符合国际物流标准</p>

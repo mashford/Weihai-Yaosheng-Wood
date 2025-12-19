@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, TreePine } from 'lucide-react';
 import { SectionId } from '../types';
 
 interface NavbarProps {
@@ -46,7 +45,7 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, scrollToSection }) => {
             onClick={() => handleNavClick(SectionId.HOME)}
           >
             <div className="bg-amber-700 text-white p-2 rounded-lg mr-3 shadow-md">
-              <TreePine size={28} />
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m17 10 3 3m-3-3-3 3m3-3V2M7 10l3 3m-3-3-3 3m3-3V2M12 15l3 3m-3-3-3 3m3-3v7"/></svg>
             </div>
             <div>
               <h1 className="text-xl font-bold tracking-wide text-stone-900">
@@ -81,7 +80,11 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, scrollToSection }) => {
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="p-2 text-stone-700"
             >
-              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              {isMobileMenuOpen ? (
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+              ) : (
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+              )}
             </button>
           </div>
         </div>
