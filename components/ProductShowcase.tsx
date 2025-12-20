@@ -63,7 +63,7 @@ const PRODUCT_DATA: Product[] = [
     title: "大型设备底座",
     category: "大型设备底座",
     description: "超强承重能力",
-    imageUrl: "/images/15.jpg",
+    imageUrl: "/images/15.webp",
   },
 ];
 

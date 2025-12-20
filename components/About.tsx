@@ -10,7 +10,7 @@ const About: React.FC = () => {
           <div className="relative mb-12 lg:mb-0">
             <div className="grid grid-cols-2 gap-4">
               <img
-                src="/images/13.jpg"
+                src="/images/13.webp"
                 alt="Factory worker"
                 className="rounded-lg shadow-xl w-full h-64 object-cover transform translate-y-4"
                 onError={(e) => {
@@ -20,7 +20,7 @@ const About: React.FC = () => {
                 }}
               />
               <img
-                src="/images/14.jpg"
+                src="/images/14.webp"
                 alt="Wood piles"
                 className="rounded-lg shadow-xl w-full h-64 object-cover"
                 onError={(e) => {
