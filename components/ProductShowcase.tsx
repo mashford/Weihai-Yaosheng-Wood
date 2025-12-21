@@ -56,14 +56,14 @@ const PRODUCT_DATA: Product[] = [
     title: "工业配件箱包装箱",
     category: "出口包装箱",
     description: "循环使用，节省仓储空间",
-    imageUrl: "/images/8.jpg",
+    imageUrl: "/images/12.jpg",
   },
   {
     id: 9,
     title: "大型设备底座",
     category: "大型设备底座",
     description: "超强承重能力",
-    imageUrl: "/images/15.webp",
+    imageUrl: "/images/16.webp",
   },
 ];
 
