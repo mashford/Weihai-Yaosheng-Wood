@@ -156,6 +156,8 @@ function renderProducts() {
           src="${product.imageUrl}" 
           alt="${product.title}" 
           class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+          loading="lazy"
+          decoding="async"
           onerror="this.src='https://placehold.co/600x400/f5f5f4/a8a29e?text=待上传图片'"
         >
         <div class="absolute top-2 right-2 bg-black/60 text-white text-xs px-2 py-1 rounded backdrop-blur-md">
