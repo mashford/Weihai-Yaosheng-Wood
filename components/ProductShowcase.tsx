@@ -149,7 +149,7 @@ const ProductShowcase: React.FC = () => {
                 <p className="text-sm text-gray-500 mb-4 line-clamp-2">
                   {product.description}
                 </p>
-                <div className="flex items-center text-amber-600 text-sm font-medium">
+                {/* <div className="flex items-center text-amber-600 text-sm font-medium">
                   {product.category === "出口包装箱" && (
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -208,7 +208,7 @@ const ProductShowcase: React.FC = () => {
                     </svg>
                   )}
                   <span>查看详情</span>
-                </div>
+                </div> */}
               </div>
             </div>
           ))}
