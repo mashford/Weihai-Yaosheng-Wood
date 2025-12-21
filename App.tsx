@@ -4,10 +4,8 @@ import Hero from "./components/Hero";
 import About from "./components/About";
 import Features from "./components/Features";
 import ProductShowcase from "./components/ProductShowcase";
-import ImageCarousel from "./components/ImageCarousel";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
-import AIConsultant from "./components/AIConsultant";
 import { SectionId } from "./types";
 
 function App() {

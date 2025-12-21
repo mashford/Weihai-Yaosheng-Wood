@@ -149,66 +149,6 @@ const ProductShowcase: React.FC = () => {
                 <p className="text-sm text-gray-500 mb-4 line-clamp-2">
                   {product.description}
                 </p>
-                {/* <div className="flex items-center text-amber-600 text-sm font-medium">
-                  {product.category === "出口包装箱" && (
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="mr-1"
-                    >
-                      <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" />
-                      <path d="m3.3 7 8.7 5 8.7-5" />
-                      <path d="M12 22V12" />
-                    </svg>
-                  )}
-                  {product.category === "实木托盘" && (
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="mr-1"
-                    >
-                      <path d="m15 12-8.5 8.5c-.83.83-2.17.83-3 0 0 0 0 0 0 0a2.12 2.12 0 0 1 0-3L12 9" />
-                      <path d="M17.64 15 22 10.64" />
-                      <path d="m20.91 11.7-1.25-1.25c-.6-.6-.93-1.4-.93-2.25v-.86c0-1.02-.64-1.91-1.58-2.21l-.5-.16c-1.12-.35-2.3.2-2.73 1.29l-.47 1.2c-.34.89-1 1.59-1.84 1.98l-1.04.48c-1.1.52-1.53 1.84-1 2.9l.13.26c.4.81.47 1.74.2 2.6l-.3 1.05c-.3 1.06.26 2.18 1.3 2.58l.45.18c1 .39 2.1.18 2.88-.54l1.1-1c.74-.68 1.74-.98 2.73-.83l1.24.2c1.1.18 2.1-.53 2.27-1.63z" />
-                    </svg>
-                  )}
-                  {["免熏蒸托盘", "航空托盘"].includes(product.category) && (
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="mr-1"
-                    >
-                      <path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2" />
-                      <path d="M15 18H9" />
-                      <path d="M19 18h2a1 1 0 0 0 1-1v-5h-7v7Z" />
-                      <path d="M16 8h4.7c.4 0 .8.2 1 .5L24 12" />
-                      <circle cx="7" cy="18" r="2" />
-                      <circle cx="18" cy="18" r="2" />
-                    </svg>
-                  )}
-                  <span>查看详情</span>
-                </div> */}
               </div>
             </div>
           ))}
