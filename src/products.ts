@@ -27,7 +27,7 @@ export const PRODUCT_DATA: Product[] = [
     title: "电子设备精密包装",
     category: "出口包装箱",
     description: "防震防潮，保护精密仪器",
-    imageUrl: "/images/4.webp",
+    imageUrl: "/images/18.webp",
   },
   {
     id: 5,
