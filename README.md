@@ -1,20 +1,108 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# 威海耀晟木制品有限公司官网
 
-# Run and deploy your AI Studio app
+这是一个为**威海耀晟木制品有限公司**开发的现代化响应式官方网站。项目采用 React 架构并集成 SSG（静态站点生成），旨在为这家植根于威海的资深木制品企业提供高性能、SEO 友好的互联网展示窗口。
 
-This contains everything you need to run your app locally.
+## 项目背景
 
-View your app in AI Studio: https://ai.studio/apps/drive/1k84r9lSCctpDX0GLGDGK2owH7HDC9K28
+### 植根威海，服务全球
+威海位于山东半岛最东端，是中国著名的海滨城市和重要的对外贸易港口。得益于优越的地理位置，威海的企业在国际物流与出口贸易领域拥有天然优势。
 
-## Run Locally
+**威海耀晟木制品有限公司**坐落于威海市环翠区，拥有超过 **10年** 的行业深耕经验。自成立以来，公司始终专注于木制品的精密加工，发展成为集研发、生产、销售、出口于一体的专业级木质包装供应商。
 
-**Prerequisites:**  Node.js
+### 核心使命
+在复杂的全球物流环境中，货物的安全防护至关重要。威海耀晟致力于为：
+- **精密电子仪器**提供防震防潮的包装方案；
+- **大型工业设备**提供超高承重的木质底座；
+- **国际出口贸易**提供符合 ISPM15 标准的免熏蒸/熏蒸托盘。
+
+通过这个网站，威海耀晟将其精益求精的“匠心品质”从线下的标准车间延伸到了线上的全方位展示。
+
+---
+
+## 技术架构
+
+- **前端架构**: React 19 + TypeScript
+- **样式系统**: Tailwind CSS 4 (原生性能优化)
+- **渲染策略**: 自定义 SSG (Static Site Generation)
+    - **SEO 优化**: 针对木托盘、包装箱等核心业务关键词提供完美的搜索引擎抓取支持。
+    - **极速首屏**: 预渲染出的静态页面让用户在任何环境下都能秒开网站。
+
+## 目录结构与工作流
+
+- `src/components/`: 实现 Navbar, Hero, About 等高度可复用的业务组件。
+- `src/entry-server.tsx`: 服务端渲染逻辑，驱动 SSG 生成过程。
+- `prerender.js`: 自动化预渲染脚本。
+- `pnpm run build`: 一键完成客户端编译、服务端导出与静态 HTML 注入。
+
+## 快速上手
+
+```bash
+# 安装依赖
+pnpm install
+
+# 本地开发
+pnpm dev
+
+# 生产环境构建 (SSG)
+pnpm build
+```
 
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+### SSG
+
+这个 SSG 方案采用了 "构建时预渲染 + 客户端水合" 的策略，核心由四个部分组成：
+
+1. 服务端入口 (
+src/entry-server.tsx
+)
+这是专门为“非浏览器环境”编写的入口。它不操作 DOM，而是利用 React 提供的 ReactDOMServer。
+
+作用：导出一个 
+render
+ 函数，将 <App /> 组件树直接转换成一段 HTML 字符串。
+关联文件：
+entry-server.tsx
+2. 预渲染脚本 (
+prerender.js
+)
+这是一个在构建完成后执行的 Node.js 脚本。
+
+逻辑：
+读取 Vite 构建出来的静态 
+dist/index.html
+ 模板。
+动态加载（import）上一步生成的服务端 Bundle。
+调用 
+render()
+ 拿到 HTML 字符串。
+找到模板中的占位符 <!--app-html-->，替换成真正的 HTML。
+把最终结果写回 
+dist/index.html
+。
+关联文件：
+prerender.js
+3. 构建流程控制 (
+package.json
+)
+为了自动化这个过程，我修改了 build 命令：
+
+json
+"build": "pnpm run build:client && pnpm run build:server && pnpm run prerender"
+第一步 (Client)：生成普通的 JS/CSS 资源。
+第二步 (Server)：使用 Vite 的 --ssr 模式，专门把代码编译成 Node.js 能跑的格式。
+第三步 (Prerender)：执行脚本，把 HTML 提前“填好”。
+4. 客户端接管 (
+src/main.tsx
+)
+这是 SSG 的最后一块拼图。
+
+变化：将 createRoot 改成了 hydrateRoot。
+原理：当用户访问页面时，浏览器会立即显示预渲染好的 HTML（极速首屏）。当 JS 加载完成后，React 会对比现有的 DOM 和它要在内存中构建的树。由于两者是一致的，React 只需要绑定事件监听器（水合），而不需要重新销毁并创建 DOM。
+关联文件：
+main.tsx
+这样做的优势：
+SEO 友好：爬虫抓取到的 
+index.html
+ 已经包含了完整的内容（如公司信息、产品列表）。
+极致加载体验：即使在弱网环境下，用户也能立刻看到页面排版，而不是白屏等待。
+保留交互：页面虽然是静态生成的，但水合后它依然是一个完整的 React 应用。
