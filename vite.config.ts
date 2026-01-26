@@ -25,14 +25,11 @@ export default defineConfig(({ mode, ssrBuild } : any) => {
       },
       build: {
         rollupOptions: {
-          output: {
-            manualChunks(id) {
-              if (!ssrBuild && id.includes('node_modules')) {
-                return 'vendor';
-              }
-            }
-          }
+          external: ssrBuild ? [] : ['preact', 'preact/hooks', 'preact/compat'],
         }
+      },
+      ssr: {
+        noExternal: [/./]
       }
     };
 });

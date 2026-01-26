@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'preact/compat';
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);

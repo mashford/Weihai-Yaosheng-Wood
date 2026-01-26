@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from 'preact/compat';
 import { PRODUCT_DATA, CATEGORIES } from '../products';
 
 const Products: React.FC = () => {
