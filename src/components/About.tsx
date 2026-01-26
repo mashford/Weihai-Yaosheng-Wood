@@ -8,14 +8,18 @@ const About: React.FC = () => {
           <div className="relative mb-12 lg:mb-0">
             <div className="grid grid-cols-2 gap-4">
               <img 
-                src="/images/13.webp" 
+                src="/images/about-1-md.webp" 
+                srcset="/images/about-1-sm.webp 400w, /images/about-1-md.webp 800w, /images/about-1-lg.webp 1200w"
+                sizes="(max-width: 768px) 50vw, 25vw"
                 alt="经验丰富的木工工匠正在制作出口托盘" 
                 className="rounded-lg shadow-xl w-full h-64 object-cover transform translate-y-4" 
                 loading="lazy" 
                 decoding="async" 
               />
               <img 
-                src="/images/14.webp" 
+                src="/images/about-2-md.webp" 
+                srcset="/images/about-2-sm.webp 400w, /images/about-2-md.webp 800w, /images/about-2-lg.webp 1200w"
+                sizes="(max-width: 768px) 50vw, 25vw"
                 alt="精选优质原材料木材堆场" 
                 className="rounded-lg shadow-xl w-full h-64 object-cover" 
                 loading="lazy" 
