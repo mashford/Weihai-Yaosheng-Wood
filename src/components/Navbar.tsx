@@ -110,6 +110,8 @@ const Navbar: React.FC = () => {
               id="mobile-menu-button" 
               className="p-2 text-stone-700"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label={isMobileMenuOpen ? "关闭菜单" : "打开菜单"}
+              aria-expanded={isMobileMenuOpen}
             >
               {!isMobileMenuOpen ? (
                 <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
