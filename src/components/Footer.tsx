@@ -1,6 +1,8 @@
 import React from 'preact/compat';
+import { useI18n } from '../i18n/context';
 
 const Footer: React.FC = () => {
+  const { t } = useI18n();
   const scrollToId = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -14,16 +16,16 @@ const Footer: React.FC = () => {
         <div className="md:flex md:justify-between items-center">
           <div className="mb-8 md:mb-0">
             <h2 className="text-white text-lg font-bold">威海耀晟木制品有限公司</h2>
-            <p className="mt-2 text-sm">专注品质木包装，助力全球物流。</p>
+            <p className="mt-2 text-sm">{t.footer.desc}</p>
           </div>
           <div className="flex space-x-6 text-sm">
-             <button onClick={() => scrollToId('home')} className="hover:text-white transition-colors">公司简介</button>
-             <button onClick={() => scrollToId('products')} className="hover:text-white transition-colors">产品中心</button>
-             <a href="#" className="hover:text-white transition-colors">隐私政策</a>
+            <button onClick={() => scrollToId('about')} className="hover:text-white transition-colors">{t.footer.links.about}</button>
+            <button onClick={() => scrollToId('products')} className="hover:text-white transition-colors">{t.footer.links.products}</button>
+            <a href="#" className="hover:text-white transition-colors">{t.footer.links.privacy}</a>
           </div>
         </div>
         <div className="mt-8 border-t border-stone-800 pt-8 text-sm text-center md:text-left">
-          &copy; {new Date().getFullYear()} Weihai Yaosheng Wood Products Co., Ltd. All rights reserved.
+          {t.footer.copy}
         </div>
       </div>
     </footer>

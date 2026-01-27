@@ -1,6 +1,8 @@
 import React from 'preact/compat';
+import { useI18n } from '../i18n/context';
 
 const Hero: React.FC = () => {
+  const { t } = useI18n();
   const scrollToId = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -16,34 +18,34 @@ const Hero: React.FC = () => {
         <div className="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
           <div className="mb-12 lg:mb-0 text-center lg:text-left">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-stone-900 mb-6 leading-[1.15] tracking-tight">
-              为您的货物提供<br /><span className="text-amber-700">最坚实的保护</span>
+              {t.hero.title_1}<br /><span className="text-amber-700">{t.hero.title_2}</span>
             </h1>
             <p className="mt-4 text-lg text-stone-600 mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-              威海耀晟木制品有限公司，集研发、生产、出口于一体。无论是精密电子还是重型机械，我们都为您提供专业的物流包装解决方案。
+              {t.hero.desc}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-10">
               <button 
                 onClick={() => scrollToId('products')} 
                 className="px-8 py-4 bg-amber-700 hover:bg-amber-800 text-white font-bold rounded-xl transition-all shadow-lg hover:shadow-amber-900/20 flex items-center justify-center gap-2"
               >
-                浏览产品 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
+                {t.hero.btn_browse} <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
               </button>
               <button 
                 onClick={() => scrollToId('contact')} 
                 className="px-8 py-4 bg-white border border-stone-200 hover:border-amber-600 hover:text-amber-700 text-stone-700 font-bold rounded-xl transition-all shadow-sm hover:shadow-md"
               >
-                联系我们
+                {t.hero.btn_contact}
               </button>
             </div>
             <div className="flex flex-wrap justify-center lg:justify-start gap-x-8 gap-y-3 text-sm font-medium text-stone-500">
               <div className="flex items-center gap-1">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-amber-600"><circle cx="12" cy="12" r="10" /><path d="m9 12 2 2 4-4" /></svg> 源头工厂
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-amber-600"><circle cx="12" cy="12" r="10" /><path d="m9 12 2 2 4-4" /></svg> {t.hero.feature_1}
               </div>
               <div className="flex items-center gap-1">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-amber-600"><circle cx="12" cy="12" r="10" /><path d="m9 12 2 2 4-4" /></svg> 专业定制
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-amber-600"><circle cx="12" cy="12" r="10" /><path d="m9 12 2 2 4-4" /></svg> {t.hero.feature_2}
               </div>
               <div className="flex items-center gap-1">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-amber-600"><circle cx="12" cy="12" r="10" /><path d="m9 12 2 2 4-4" /></svg> 匠心品质
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-amber-600"><circle cx="12" cy="12" r="10" /><path d="m9 12 2 2 4-4" /></svg> {t.hero.feature_3}
               </div>
             </div>
           </div>
@@ -60,8 +62,8 @@ const Hero: React.FC = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
               <div className="absolute bottom-6 left-6 text-white text-left">
-                <p className="font-bold text-lg">标准化生产车间</p>
-                <p className="text-sm opacity-90">严格把控每一道工序</p>
+                <p className="font-bold text-lg">{t.hero.badge_title}</p>
+                <p className="text-sm opacity-90">{t.hero.badge_desc}</p>
               </div>
             </div>
           </div>

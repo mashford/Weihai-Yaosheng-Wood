@@ -4,5 +4,6 @@ import '../index.css';
 
 const container = document.getElementById('root');
 if (container) {
-  hydrate(<App />, container);
+  const locale = window.location.pathname.startsWith('/en') ? 'en' : 'zh';
+  hydrate(<App locale={locale as 'zh' | 'en'} />, container);
 }

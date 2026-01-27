@@ -6,27 +6,19 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const toAbsolute = (p) => path.resolve(__dirname, p);
 
 const template = fs.readFileSync(toAbsolute('dist/index.html'), 'utf-8');
-const { render } = await import('./dist/server/entry-server.js');
+const { render, zh, en } = await import('./dist/server/entry-server.js');
 
-const { html: appHtml } = render();
+const locales = ['zh', 'en'];
 
-// 1. Inject App HTML
-let html = template.replace(`<!--app-html-->`, appHtml);
-
-// 2. Inline CSS
+// Common assets
 const assetsDir = toAbsolute('dist/assets');
 const files = fs.readdirSync(assetsDir);
 const cssFile = files.find(f => f.endsWith('.css'));
-
+let cssContent = '';
 if (cssFile) {
-  const cssPath = path.join(assetsDir, cssFile);
-  const cssContent = fs.readFileSync(cssPath, 'utf-8');
-  const linkTagRegex = new RegExp(`<link[^>]*href=["'][^"']*${cssFile}["'][^>]*>`, 'g');
-  html = html.replace(linkTagRegex, `<style>${cssContent}</style>`);
-  console.log(`Inlined CSS from ${cssFile}`);
+  cssContent = fs.readFileSync(path.join(assetsDir, cssFile), 'utf-8');
 }
 
-// 3. Inject Import Map
 const importMap = {
   imports: {
     "preact": "https://esm.sh/preact@10.28.2",
@@ -36,9 +28,63 @@ const importMap = {
     "react-dom": "https://esm.sh/preact@10.28.2/compat"
   }
 };
-
 const importMapTag = `\n    <script type="importmap">\n    ${JSON.stringify(importMap, null, 2)}\n    </script>`;
-html = html.replace('</title>', `</title>${importMapTag}`);
 
-fs.writeFileSync(toAbsolute('dist/index.html'), html);
-console.log('Prerendered index.html successfully with Import Maps.');
+for (const locale of locales) {
+  console.log(`Prerendering locale: ${locale}`);
+  const t = locale === 'en' ? en : zh;
+  
+  // 1. Render App with locale
+  const { html: appHtml } = await render(locale);
+  console.log(`App rendered (${locale}), HTML length: ${appHtml.length}`);
+
+  // 2. Process Template
+  let html = template.replace(`<!--app-html-->`, appHtml);
+
+  // Metadata translation
+  html = html.replace(/<title>.*?<\/title>/, `<title>${t.meta.title}</title>`);
+  html = html.replace(/<meta name="description" content=".*?" \/>/, `<meta name="description" content="${t.meta.desc}" />`);
+  html = html.replace(/<meta name="keywords" content=".*?" \/>/, `<meta name="keywords" content="${t.meta.keywords}" />`);
+  
+  // Open Graph
+  html = html.replace(/<meta property="og:title" content=".*?" \/>/, `<meta property="og:title" content="${t.meta.title}" />`);
+  html = html.replace(/<meta property="og:description" content=".*?" \/>/, `<meta property="og:description" content="${t.meta.desc}" />`);
+  
+  // Twitter
+  html = html.replace(/<meta property="twitter:title" content=".*?" \/>/, `<meta property="twitter:title" content="${t.meta.title}" />`);
+  html = html.replace(/<meta property="twitter:description" content=".*?" \/>/, `<meta property="twitter:description" content="${t.meta.desc}" />`);
+
+  // Inline CSS
+  if (cssFile) {
+    const linkTagRegex = new RegExp(`<link[^>]*href=["'][^"']*${cssFile}["'][^>]*>`, 'g');
+    html = html.replace(linkTagRegex, `<style>${cssContent}</style>`);
+  }
+
+  // Inject Import Map
+  html = html.replace('</title>', `</title>${importMapTag}`);
+  
+  // Update lang attribute
+  html = html.replace('<html lang="zh-CN"', `<html lang="${locale === 'zh' ? 'zh-CN' : 'en'}"`);
+
+  // Add Hreflang for SEO
+  const hreflangTags = `
+    <link rel="alternate" hreflang="zh-CN" href="https://yaoshengwood.com/" />
+    <link rel="alternate" hreflang="en" href="https://yaoshengwood.com/en/" />
+    <link rel="alternate" hreflang="x-default" href="https://yaoshengwood.com/" />`;
+  html = html.replace('</head>', `${hreflangTags}\n  </head>`);
+
+  // 3. Save file
+  if (locale === 'zh') {
+    fs.writeFileSync(toAbsolute('dist/index.html'), html);
+    console.log('Generated dist/index.html (zh)');
+  } else {
+    const outDir = toAbsolute(`dist/${locale}`);
+    if (!fs.existsSync(outDir)) {
+      fs.mkdirSync(outDir, { recursive: true });
+    }
+    fs.writeFileSync(path.join(outDir, 'index.html'), html);
+    console.log(`Generated dist/${locale}/index.html`);
+  }
+}
+
+console.log('Prerendering finished for all locales.');

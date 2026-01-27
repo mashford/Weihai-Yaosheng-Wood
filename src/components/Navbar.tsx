@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'preact/compat';
+import { useI18n } from '../i18n/context';
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const { t, locale } = useI18n();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -51,11 +53,11 @@ const Navbar: React.FC = () => {
   };
 
   const navLinks = [
-    { id: 'home', label: '首页' },
-    { id: 'about', label: '关于我们' },
-    { id: 'products', label: '产品展示' },
-    { id: 'advantages', label: '核心优势' },
-    { id: 'contact', label: '联系我们' },
+    { id: 'home', label: t.nav.home },
+    { id: 'about', label: t.nav.about },
+    { id: 'products', label: t.nav.products },
+    { id: 'advantages', label: t.nav.advantages },
+    { id: 'contact', label: t.nav.contact },
   ];
 
   return (
@@ -102,6 +104,12 @@ const Navbar: React.FC = () => {
                 {link.label}
               </button>
             ))}
+            {/* Language Switcher */}
+            <div className="flex items-center space-x-2 border-l border-stone-200 pl-4 ml-4">
+              <a href="/" className={`text-xs ${locale === 'zh' ? 'font-bold text-amber-700' : 'text-stone-500'}`}>中</a>
+              <span className="text-stone-300">|</span>
+              <a href="/en/" className={`text-xs ${locale === 'en' ? 'font-bold text-amber-700' : 'text-stone-500'}`}>EN</a>
+            </div>
           </div>
 
           {/* Mobile Menu Button */}
@@ -110,7 +118,7 @@ const Navbar: React.FC = () => {
               id="mobile-menu-button" 
               className="p-2 text-stone-700"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              aria-label={isMobileMenuOpen ? "关闭菜单" : "打开菜单"}
+              aria-label={isMobileMenuOpen ? (locale === 'en' ? "Close Menu" : "关闭菜单") : (locale === 'en' ? "Open Menu" : "打开菜单")}
               aria-expanded={isMobileMenuOpen}
             >
               {!isMobileMenuOpen ? (
@@ -146,6 +154,10 @@ const Navbar: React.FC = () => {
               {link.label}
             </button>
           ))}
+          <div className="flex items-center space-x-4 px-3 pt-4 border-t border-stone-50">
+            <a href="/" className={`text-sm ${locale === 'zh' ? 'font-bold text-amber-700' : 'text-stone-500'}`}>中文</a>
+            <a href="/en/" className={`text-sm ${locale === 'en' ? 'font-bold text-amber-700' : 'text-stone-500'}`}>English</a>
+          </div>
         </div>
       </div>
     </nav>
