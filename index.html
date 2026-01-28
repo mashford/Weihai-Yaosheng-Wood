@@ -32,7 +32,31 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
 
-      // Optimization: Postpone both download and execution of GA until browser is idle
+      /**
+       * Smart Idle: Execute task when browser is idle, 
+       * but yield immediately if user input is detected.
+       */
+      const smartIdle = (task) => {
+        const runTask = (deadline) => {
+          // Chromium-only API but highly effective for TBT
+          const isInputPending = navigator.scheduling?.isInputPending?.();
+          
+          if (deadline.timeRemaining() > 0 && !isInputPending) {
+            task();
+          } else {
+            // Yield and reschedule
+            requestIdleCallback(runTask);
+          }
+        };
+
+        if ('requestIdleCallback' in window) {
+          requestIdleCallback(runTask);
+        } else {
+          // Fallback to load event for Safari/Legacy
+          window.addEventListener('load', task, { once: true });
+        }
+      };
+
       const initGA = () => {
         const script = document.createElement('script');
         script.src = "https://www.googletagmanager.com/gtag/js?id=G-JB62TZLYR5";
@@ -43,11 +67,7 @@
         gtag('config', 'G-JB62TZLYR5');
       };
 
-      if ('requestIdleCallback' in window) {
-        requestIdleCallback(initGA);
-      } else {
-        window.addEventListener('load', initGA);
-      }
+      smartIdle(initGA);
     </script>
 
     <link rel="stylesheet" href="/index.css" />
