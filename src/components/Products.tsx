@@ -9,63 +9,63 @@ const Products: React.FC = () => {
       title: t.products.items["1"].title,
       category: t.products.categories.pallet_free,
       description: t.products.items["1"].desc,
-      imageUrl: "/images/6.webp"
+      imageUrl: "/images/export-plywood-pallet.webp"
     },
     {
       id: 2,
       title: t.products.items["2"].title,
       category: t.products.categories.box,
       description: t.products.items["2"].desc,
-      imageUrl: "/images/5.webp"
+      imageUrl: "/images/industrial-machinery-box.webp"
     },
     {
       id: 3,
       title: t.products.items["3"].title,
       category: t.products.categories.pallet_solid,
       description: t.products.items["3"].desc,
-      imageUrl: "/images/1.webp"
+      imageUrl: "/images/solid-wood-pallet.webp"
     },
     {
       id: 4,
       title: t.products.items["4"].title,
       category: t.products.categories.box,
       description: t.products.items["4"].desc,
-      imageUrl: "/images/18.webp"
+      imageUrl: "/images/precision-electronics-box.webp"
     },
     {
       id: 5,
       title: t.products.items["5"].title,
       category: t.products.categories.pallet_air,
       description: t.products.items["5"].desc,
-      imageUrl: "/images/7.webp"
+      imageUrl: "/images/aviation-light-pallet.webp"
     },
     {
       id: 6,
       title: t.products.items["6"].title,
       category: t.products.categories.pallet_fume,
       description: t.products.items["6"].desc,
-      imageUrl: "/images/11.webp"
+      imageUrl: "/images/export-fumigation-pallet.webp"
     },
     {
       id: 7,
       title: t.products.items["7"].title,
       category: t.products.categories.box,
       description: t.products.items["7"].desc,
-      imageUrl: "/images/10.webp"
+      imageUrl: "/images/steel-strip-box.webp"
     },
     {
       id: 8,
       title: t.products.items["8"].title,
       category: t.products.categories.box,
       description: t.products.items["8"].desc,
-      imageUrl: "/images/12.webp"
+      imageUrl: "/images/industrial-parts-box.webp"
     },
     {
       id: 9,
       title: t.products.items["9"].title,
       category: t.products.categories.base,
       description: t.products.items["9"].desc,
-      imageUrl: "/images/16.webp"
+      imageUrl: "/images/heavy-equipment-base.webp"
     }
   ];
 

@@ -52,8 +52,8 @@ const Hero: React.FC = () => {
           <div className="relative lg:h-[600px] flex items-center">
             <div className="relative w-full aspect-[4/3] lg:aspect-auto lg:h-full rounded-2xl overflow-hidden shadow-2xl border-4 border-white transform rotate-1 hover:rotate-0 transition-transform duration-500">
               <img 
-                src="/images/hero-md.webp" 
-                srcset="/images/hero-sm.webp 480w, /images/hero-md.webp 960w, /images/hero-lg.webp 1920w"
+                src="/images/factory-workshop-md.webp" 
+                srcset="/images/factory-workshop-sm.webp 480w, /images/factory-workshop-md.webp 960w, /images/factory-workshop-lg.webp 1920w"
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 alt="耀晟木制品车间 - 专业木质包装生产线" 
                 className="w-full h-full object-cover" 
