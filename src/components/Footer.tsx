@@ -24,8 +24,16 @@ const Footer: React.FC = () => {
             <a href="#" className="hover:text-white transition-colors">{t.footer.links.privacy}</a>
           </div>
         </div>
-        <div className="mt-8 border-t border-stone-800 pt-8 text-sm text-center md:text-left">
-          {t.footer.copy}
+        <div className="mt-8 border-t border-stone-800 pt-8 text-sm flex flex-col md:flex-row justify-between items-center gap-4">
+          <p>{t.footer.copy}</p>
+          <a 
+            href="https://beian.miit.gov.cn/" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="hover:text-white transition-colors"
+          >
+            {t.footer.icp}
+          </a>
         </div>
       </div>
     </footer>

@@ -95,7 +95,8 @@ export const zh = {
       products: "产品中心",
       privacy: "隐私政策"
     },
-    copy: "© 2026 Weihai Yaosheng Wood Products Co., Ltd. All rights reserved."
+    copy: "© 2026 Weihai Yaosheng Wood Products Co., Ltd. All rights reserved.",
+    icp: "鲁ICP备2026008626号-1"
   }
 };
 
