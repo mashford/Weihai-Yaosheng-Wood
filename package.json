@@ -9,15 +9,23 @@
     "build:client": "vite build",
     "build:server": "vite build --ssr src/entry-server.tsx --outDir dist/server",
     "prerender": "node prerender.js",
+    "serve": "node server.js",
+    "start": "pm2 start ecosystem.config.cjs",
+    "stop": "pm2 stop ecosystem.config.cjs",
+    "restart": "pm2 restart ecosystem.config.cjs",
     "preview": "vite preview"
   },
   "dependencies": {
     "@google/genai": "^1.33.0",
+    "compression": "^1.8.1",
+    "express": "^5.2.1",
     "preact": "^10.28.2"
   },
   "devDependencies": {
     "@preact/preset-vite": "^2.10.2",
     "@tailwindcss/postcss": "^4.1.18",
+    "@types/compression": "^1.8.1",
+    "@types/express": "^5.0.6",
     "@types/node": "^22.14.0",
     "autoprefixer": "^10.4.23",
     "postcss": "^8.5.6",
