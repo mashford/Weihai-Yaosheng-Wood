@@ -47,6 +47,25 @@ pnpm dev
 pnpm build
 ```
 
+## 生产环境 HTTPS
+
+如果服务器前面使用 Nginx，推荐让 Nginx 负责 HTTPS 证书、HTTP 到 HTTPS 跳转和反向代理。Node 只需要在本机 HTTP 端口运行：
+
+```bash
+pnpm build
+pnpm start
+```
+
+`ecosystem.config.cjs` 默认让 Node 监听 `PORT=3000`。Nginx 再把公网的 `443` 请求代理到 `http://127.0.0.1:3000`。
+
+参考配置见 `deploy/nginx-weihaiyaosheng.conf`。使用 Let's Encrypt 时，可以先安装 certbot，然后运行：
+
+```bash
+sudo certbot --nginx -d weihaiyaosheng.com -d www.weihaiyaosheng.com
+```
+
+如果不使用 Nginx，`server.js` 仍保留了可选的 Node 级 HTTPS fallback：设置 `SSL_CERT_PATH` 和 `SSL_KEY_PATH` 后会直接启用 HTTPS；但在 Nginx 部署中不要设置这些变量。
+
 
 ### SSG
 
