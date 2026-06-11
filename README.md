@@ -58,7 +58,16 @@ pnpm start
 
 `ecosystem.config.cjs` 默认让 Node 监听 `PORT=3000`。Nginx 再把公网的 `443` 请求代理到 `http://127.0.0.1:3000`。
 
-参考配置见 `deploy/nginx-weihaiyaosheng.conf`。使用 Let's Encrypt 时，可以先安装 certbot，然后运行：
+参考配置见 `deploy/nginx-weihaiyaosheng.conf`。在服务器上可以这样安装 Nginx 配置：
+
+```bash
+sudo cp ~/Weihai-Yaosheng-Wood/deploy/nginx-weihaiyaosheng.conf /etc/nginx/sites-available/weihaiyaosheng
+sudo ln -s /etc/nginx/sites-available/weihaiyaosheng /etc/nginx/sites-enabled/weihaiyaosheng
+sudo nginx -t
+sudo systemctl reload nginx
+```
+
+使用 Let's Encrypt 时，可以先安装 certbot，然后运行：
 
 ```bash
 sudo certbot --nginx -d weihaiyaosheng.com -d www.weihaiyaosheng.com
