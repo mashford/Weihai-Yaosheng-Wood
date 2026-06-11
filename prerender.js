@@ -68,9 +68,9 @@ for (const locale of locales) {
 
   // Add Hreflang for SEO
   const hreflangTags = `
-    <link rel="alternate" hreflang="zh-CN" href="https://yaoshengwood.com/" />
-    <link rel="alternate" hreflang="en" href="https://yaoshengwood.com/en/" />
-    <link rel="alternate" hreflang="x-default" href="https://yaoshengwood.com/" />`;
+    <link rel="alternate" hreflang="zh-CN" href="https://weihaiyaosheng.cn/" />
+    <link rel="alternate" hreflang="en" href="https://weihaiyaosheng.cn/en/" />
+    <link rel="alternate" hreflang="x-default" href="https://weihaiyaosheng.cn/" />`;
   html = html.replace('</head>', `${hreflangTags}\n  </head>`);
 
   // 3. Save file
@@ -94,22 +94,22 @@ const lastmod = new Date().toISOString().split('T')[0];
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://weihaiyaosheng.com/</loc>
+    <loc>https://weihaiyaosheng.cn/</loc>
     <lastmod>${lastmod}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://weihaiyaosheng.com/" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://weihaiyaosheng.com/en/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://weihaiyaosheng.com/" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://weihaiyaosheng.cn/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://weihaiyaosheng.cn/en/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://weihaiyaosheng.cn/" />
   </url>
   <url>
-    <loc>https://weihaiyaosheng.com/en/</loc>
+    <loc>https://weihaiyaosheng.cn/en/</loc>
     <lastmod>${lastmod}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://weihaiyaosheng.com/" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://weihaiyaosheng.com/en/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://weihaiyaosheng.com/" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://weihaiyaosheng.cn/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://weihaiyaosheng.cn/en/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://weihaiyaosheng.cn/" />
   </url>
 </urlset>`;
 
@@ -119,7 +119,7 @@ console.log('Generated dist/sitemap.xml');
 // 5. Generate robots.txt
 const robots = `User-agent: *
 Allow: /
-Sitemap: https://weihaiyaosheng.com/sitemap.xml
+Sitemap: https://weihaiyaosheng.cn/sitemap.xml
 `;
 
 fs.writeFileSync(toAbsolute('dist/robots.txt'), robots);
