@@ -70,7 +70,7 @@ sudo systemctl reload nginx
 使用 Let's Encrypt 时，可以先安装 certbot，然后运行：
 
 ```bash
-sudo certbot --nginx -d weihaiyaosheng.cn -d www.weihaiyaosheng.cn
+sudo certbot --nginx -d weihaiyaosheng.cn -d www.weihaiyaosheng.cn -d weihaiyaosheng.com -d www.weihaiyaosheng.com
 ```
 
 如果不使用 Nginx，`server.js` 仍保留了可选的 Node 级 HTTPS fallback：设置 `SSL_CERT_PATH` 和 `SSL_KEY_PATH` 后会直接启用 HTTPS；但在 Nginx 部署中不要设置这些变量。

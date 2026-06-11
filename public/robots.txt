@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://weihaiyaosheng.cn/sitemap.xml
+Sitemap: https://yaoshengwood.com/sitemap.xml
